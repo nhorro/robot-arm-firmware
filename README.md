@@ -3,6 +3,10 @@
 Arduino firmware to control a robotic arm such as [EEZYbotARM](https://www.thingiverse.com/thing:1015238).
 Tested in Mega2560.
 
+Changelog:
+
+- Initial version. Minimal servo control.
+
 ## Dependencies
 
 - [arduino-cli](https://github.com/arduino/arduino-cli)
@@ -55,7 +59,9 @@ jupyter notebook
 
 A simple serial protocol is used. Commands have the following structure:
 
+```
 "CMD!"<length><payload><crc16>'\n'
+```
 
 where:
 - length is a byte indicating the length of payload.
