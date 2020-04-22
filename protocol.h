@@ -22,13 +22,17 @@ public:
 
 	enum error_code
 	{
+		// Communication Protocol errors
 		success = 0,
 		bad_sync = 1,
 		invalid_length = 2,
 		bad_crc = 3,
 		bad_terminator = 4,
 		unknown_opcode = 5,
-		timeout
+		timeout,
+
+		// Application errors
+		invalid_mode		
 	};
 
 	packet_decoder();

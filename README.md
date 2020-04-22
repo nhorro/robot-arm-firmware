@@ -18,14 +18,14 @@ Changelog:
 
 Arduino Pins for EEZYbotARM:
 
-|Servo          | Arduino Pin(*)  |
-|---------------|-----------------|
-|Servo A (Base)-| 3               |
-|Servo B (Arm1)-| 4               |
-|Servo C (Arm2)-| 5               |
-|Servo D (Tool)-| 6               |
+|Servo          | Pin(*) | Idle | Range                     |
+|---------------|--------|------|---------------------------|
+|Servo A (Base)-| 3      | ??   |                           |
+|Servo B (Arm1)-| 4      | 90   |                           |
+|Servo C (Arm2)-| 5      | 130  |                           |
+|Servo D (Tool)-| 6      | 120  | ~86 (Closed) / 180 (Open) |
 
-(*) Mega
+(*) Arduino Mega
 
 Note: remember to connect ground from arduino to external power supply.
 

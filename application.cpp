@@ -25,7 +25,6 @@ void application::process()
 {
 	this->process_packets();
 	this->servo_ctrl.update();
-	delay(50);
 }
 
 void application::process_payload(const char* payload, uint8_t n)
@@ -61,6 +60,7 @@ void application::set_error(error_code ec)
 
 application::error_code application::request_tmy(const char* payload, uint8_t n)
 {
+	this->tmy[TMY_PARAM_MODE] = static_cast<char>(this->servo_ctrl.get_mode());
 	this->tmy[TMY_PARAM_SERVO1_CURR_POSITION] = static_cast<char>(this->servo_ctrl.get_states()[0].x);
 	this->tmy[TMY_PARAM_SERVO1_TARGET_POSITION] = static_cast<char>(this->servo_ctrl.get_states()[0].target_x);
 	this->tmy[TMY_PARAM_SERVO2_CURR_POSITION] = static_cast<char>(this->servo_ctrl.get_states()[1].x);
@@ -95,10 +95,6 @@ application::error_code application::echo(const char* payload, uint8_t n)
 
 application::error_code application::update_servo_positions(const char* payload,
 		uint8_t n)
-{	
-
-	this->servo_ctrl.ease_to(payload);
-	
-
-	return error_code::success;
+{		
+	return this->servo_ctrl.ease_to(payload) ? error_code::success : error_code::invalid_mode;
 }
